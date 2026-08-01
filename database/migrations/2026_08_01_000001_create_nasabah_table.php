@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('nasabah', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama')->unique();
+            $table->unsignedInteger('setoran_mingguan');
+            $table->unsignedInteger('frekuensi_setor')->default(0);
+            $table->unsignedBigInteger('saldo')->default(0);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('nasabah');
+    }
+};
