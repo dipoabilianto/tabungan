@@ -30,11 +30,9 @@
             </label>
         </div>
 
-        <!-- reCAPTCHA -->
+        <!-- reCAPTCHA v3 -->
         @if (config('services.recaptcha.site_key'))
-            <div class="flex justify-center">
-                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
-            </div>
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
             <x-input-error :messages="$errors->get('g-recaptcha-response')" class="text-gold" />
         @endif
 
@@ -45,6 +43,22 @@
     </form>
 
     @if (config('services.recaptcha.site_key'))
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var form = document.querySelector('form');
+                if (!form) return;
+
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', { action: 'login' }).then(function (token) {
+                            document.getElementById('g-recaptcha-response').value = token;
+                            form.submit();
+                        });
+                    });
+                });
+            });
+        </script>
     @endif
 </x-guest-layout>

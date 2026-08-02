@@ -35,7 +35,7 @@ class RecaptchaRuleTest extends TestCase
     public function test_lewat_ketika_google_menerima(): void
     {
         Http::fake([
-            'google.com/recaptcha/*' => Http::response(['success' => true], 200),
+            'google.com/recaptcha/*' => Http::response(['success' => true, 'score' => 0.9], 200),
         ]);
         config()->set('services.recaptcha.secret', 'secret');
 
@@ -56,6 +56,21 @@ class RecaptchaRuleTest extends TestCase
 
         $failed = false;
         (new Recaptcha)->validate('g-recaptcha-response', 'token-invalid', function () use (&$failed) {
+            $failed = true;
+        });
+
+        $this->assertTrue($failed);
+    }
+
+    public function test_gagal_ketika_skor_rendah(): void
+    {
+        Http::fake([
+            'google.com/recaptcha/*' => Http::response(['success' => true, 'score' => 0.1], 200),
+        ]);
+        config()->set('services.recaptcha.secret', 'secret');
+
+        $failed = false;
+        (new Recaptcha)->validate('g-recaptcha-response', 'token-robot', function () use (&$failed) {
             $failed = true;
         });
 

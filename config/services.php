@@ -38,6 +38,8 @@ return [
     'recaptcha' => [
         'site_key' => env('RECAPTCHA_SITE_KEY'),
         'secret' => env('RECAPTCHA_SECRET_KEY'),
+        // reCAPTCHA v3: terima bila skor >= ambang ini (0.0 - 1.0)
+        'min_score' => 0.5,
     ],
 
 ];

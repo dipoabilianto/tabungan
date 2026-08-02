@@ -18,7 +18,7 @@ class Recaptcha implements ValidationRule
         }
 
         if (blank($value)) {
-            $fail('Harap selesaikan verifikasi reCAPTCHA.');
+            $fail('Verifikasi keamanan gagal, silakan coba lagi.');
 
             return;
         }
@@ -38,8 +38,11 @@ class Recaptcha implements ValidationRule
 
         $data = $response->json();
 
-        if (! $response->ok() || ! ($data['success'] ?? false)) {
-            $fail('Verifikasi reCAPTCHA gagal, silakan coba lagi.');
+        $score = (float) ($data['score'] ?? 0);
+        $threshold = (float) config('services.recaptcha.min_score', 0.5);
+
+        if (! $response->ok() || ! ($data['success'] ?? false) || $score < $threshold) {
+            $fail('Verifikasi keamanan gagal, silakan coba lagi.');
         }
     }
 }
