@@ -19,11 +19,11 @@
         {{-- Animated mesh-gradient background --}}
         <div class="relative min-h-screen overflow-hidden bg-primary-dark">
             <div class="pointer-events-none absolute inset-0">
-                <div class="animate-blob-1 absolute -top-32 -left-32 h-[34rem] w-[34rem] rounded-full bg-[#4FA98C] opacity-50 blur-3xl"></div>
+                <div class="animate-blob-1 absolute -top-32 -left-32 h-[34rem] w-[34rem] rounded-full bg-[#4F8FD5] opacity-50 blur-3xl"></div>
                 <div class="animate-blob-2 absolute top-1/4 -right-40 h-[30rem] w-[30rem] rounded-full bg-[#C9A227] opacity-40 blur-3xl"></div>
                 <div class="animate-blob-3 absolute -bottom-40 left-1/4 h-[32rem] w-[32rem] rounded-full bg-[#F2D9A8] opacity-30 blur-3xl"></div>
-                <div class="animate-blob-1 absolute bottom-10 right-1/4 h-[24rem] w-[24rem] rounded-full bg-[#A9D8B8] opacity-30 blur-3xl"></div>
-                <div class="animate-blob-2 absolute top-10 left-1/3 h-[22rem] w-[22rem] rounded-full bg-[#1F4A38] opacity-60 blur-3xl"></div>
+                <div class="animate-blob-1 absolute bottom-10 right-1/4 h-[24rem] w-[24rem] rounded-full bg-[#A9CBF0] opacity-30 blur-3xl"></div>
+                <div class="animate-blob-2 absolute top-10 left-1/3 h-[22rem] w-[22rem] rounded-full bg-[#163C6B] opacity-60 blur-3xl"></div>
             </div>
 
             <div class="relative flex min-h-screen flex-col items-center justify-center p-6">

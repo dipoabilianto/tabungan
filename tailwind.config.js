@@ -12,14 +12,14 @@ export default {
     theme: {
         extend: {
             colors: {
-                ink: '#12241D',
-                paper: '#F5FAF5',
-                primary: '#2F6F52',
-                'primary-dark': '#1B4633',
+                ink: '#122A42',
+                paper: '#F4F8FC',
+                primary: '#2B6CB0',
+                'primary-dark': '#163C6B',
                 gold: '#C9A227',
                 coral: '#C0533E',
-                muted: '#6B8577',
-                border: '#DCE6DE',
+                muted: '#5F7A96',
+                border: '#D6E1EF',
             },
             fontFamily: {
                 sans: ['"Plus Jakarta Sans"', ...defaultTheme.fontFamily.sans],
